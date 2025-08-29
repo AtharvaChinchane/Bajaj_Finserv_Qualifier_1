@@ -122,7 +122,13 @@ def bfhl():
 
     except Exception as e:
         return jsonify({"is_success": False, "error": str(e)}), 500
+@app.route("/", methods=["GET"])
+def home():
+    return {
+        "message": "API is running ✅. Use POST /bfhl with JSON payload."
+    }
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
